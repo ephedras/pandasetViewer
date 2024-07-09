@@ -2,7 +2,7 @@
 ## Instructions
 This is dataset viewer for pandaset dataset meant for autonomous vehicle research. 
 
-1. Create a seaparate enviroment Python>=3.6
+1. Create an enviroment Python>=3.6
 2. Clone this repo
 
 ```
@@ -23,15 +23,20 @@ streamlit run pandasetViewer.py
 ## Instructions for pandaset-devkit installation
 
 ### Setup
-
-1. Create a Python>=3.6 environment with `pip` installed.
-2. Clone the repository `git clone git@github.com:scaleapi/pandaset-devkit.git`
-3. `cd` into `pandaset-devkit/python`
+1. `cd` into `pandaset-devkit/python`
 4. Execute `pip install .`
 
 The `pandaset-devkit` is now installed in your Python>=3.6 environment and can be used.
 
 ---
+## Video Demo
+<video width="600" controls>
+  <source src="assets/demoVids/Lidar3d.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
+---
+
 ## License Statement
 
 This work, including the modifications and derivative works based on the original devkit and dataset, is made available under the terms and conditions specified by the original licenses of the devkit and dataset. These original licenses supersede any terms specified herein.

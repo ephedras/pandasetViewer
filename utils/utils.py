@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import random
 import folium
+import open3d as o3d
 
 
 def depth_projection(seq, lidar, camera_name, seq_idx):
@@ -86,3 +87,27 @@ def display_map(seq):
         html_string = f.read()
     
     st.components.v1.html(html_string, width=700, height=500)
+
+def lidar3d(seq,seq_idx):
+    # get Pandar64 points
+    seq.lidar.set_sensor(0)
+    pandar64_points = seq.lidar[seq_idx].to_numpy()
+    print("Pandar64 has points: ", pandar64_points.shape)
+
+    # get PandarGT points
+    seq.lidar.set_sensor(1)
+    pandarGT_points = seq.lidar[seq_idx].to_numpy()
+    print("PandarGT has points: ", pandarGT_points.shape)
+
+    axis_pcd = o3d.geometry.TriangleMesh.create_coordinate_frame(size=2.0, origin=[0, 0, 0])
+
+    p64_pc = o3d.geometry.PointCloud()
+    p64_pc.points = o3d.utility.Vector3dVector(pandar64_points[:, :3])
+    p64_pc.colors = o3d.utility.Vector3dVector([[0, 0, 1] for i in range(pandar64_points.shape[0])])
+
+    gt_pc = o3d.geometry.PointCloud()
+    gt_pc.points = o3d.utility.Vector3dVector(pandarGT_points[:, :3])
+    gt_pc.colors = o3d.utility.Vector3dVector([[10, 0, 1] for _ in range(pandarGT_points.shape[0])])
+
+    o3d.visualization.draw_geometries([axis_pcd, p64_pc, gt_pc], window_name="world frame")
+

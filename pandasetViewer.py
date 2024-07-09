@@ -8,7 +8,7 @@ from pandaset import DataSet
 # import open3d as o3d
 # import pandas as pd
 # import plotly.graph_objs as go
-from utils.utils import depth_projection,semantic_segmentation,display_map
+from utils.utils import depth_projection,semantic_segmentation,display_map,lidar3d
 
 
 #importing the dataset
@@ -18,21 +18,21 @@ allSeqList = dataset.sequences()
 semSeqList = dataset.sequences(with_semseg=True)
 
 
-st.set_page_config(page_title="Pandaset Dataset Viewer",page_icon='assets\logo\icon_clear.png')
+st.set_page_config(page_title="Pandaset Dataset Viewer",page_icon='assets/logo/icon_clear.png')
 
-# Add custom CSS to hide the GitHub icon
-hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+# # Add custom CSS to hide the GitHub icon
+# hide_github_icon = """
+# GithubIcon {
+#   visibility: hidden;
+# }
+# """
+# st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 # Set up the sidebar with a logo, a dropdown, and radio buttons
 st.sidebar.image("assets/logo/logo_clear.png", use_column_width=True)
 
 
-dropdown_options = ["Depth Projection", "Semantic Segmentation", "Map Route"]
+dropdown_options = ["Depth Projection", "Semantic Segmentation", "Map Route", "LIDAR 3D"]
 
 
 # Radio buttons in the main area
@@ -46,10 +46,13 @@ else:
 
 seq = dataset[selected_seq]
 seq.load()
+lidar = seq.lidar
+totlen = len(lidar.data)
 
-if radio_selection!="Map Route":
+if radio_selection!="Map Route" and radio_selection!= "LIDAR 3D":
     cameraSelected = st.sidebar.selectbox("Select Camera:", seq.camera.keys())
-    lidar = seq.lidar
+if radio_selection == 'LIDAR 3D':
+    select_seq_lidar = st.sidebar.slider("Sequence number", 1, totlen)   
 # timeSlider = st.sidebar.slider("Time Sequence",0, len(lidar.data))
 
 
@@ -59,12 +62,13 @@ if st.sidebar.button("Load Data", 'Load'):
     
     
     if  radio_selection=="Map Route":
-            st.header(f"Map Route")
-            st.subheader(f"For Seq. {selected_seq}")
-            progress_bar.progress(10)
-            display_map(seq)
+        st.header(f"Map Route")
+        st.subheader(f"For Seq. {selected_seq}")
+        progress_bar.progress(10)
+        display_map(seq)
+    
     else:
-        totlen = len(lidar.data)
+        
         if radio_selection=="Depth Projection":
             # Create tabs for each time step
             tabs = st.tabs([f"TimeStep {i+1}" for i in range(totlen)])
@@ -83,7 +87,11 @@ if st.sidebar.button("Load Data", 'Load'):
                     st.subheader(f"For Seq. {selected_seq} at step {time + 1}")
                     semantic_segmentation(seq, lidar, cameraSelected, time)
                     progress_bar.progress((time + 1) / totlen)  
-         
+        elif radio_selection=="LIDAR 3D":
+            
+            st.header(f"LIDAR 3D")
+            st.subheader(f"For Seq. {selected_seq} for TimeStep {select_seq_lidar} opened in different window")
+            lidar3d(seq,select_seq_lidar - 1)
                 
     progress_bar.empty()  # Clear the progress bar
 

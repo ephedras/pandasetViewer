@@ -30,7 +30,7 @@ The `pandaset-devkit` is now installed in your Python>=3.6 environment and can b
 
 ---
 ## Video Demo
-![Watch the video](assets/demoVids/Lidar3d.mp4)
+![video](assets/demoVids/DepthProjection.mp4)
 
 ---
 

@@ -29,8 +29,10 @@ streamlit run pandasetViewer.py
 The `pandaset-devkit` is now installed in your Python>=3.6 environment and can be used.
 
 ---
-## Video Demo
-![video](assets/demoVids/DepthProjection.mp4)
+<video width="600" controls>
+  <source src="assets\demoVids\DepthProjection.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ---
 

@@ -1,13 +1,13 @@
 import streamlit as st
 from pandaset import DataSet
-from pandaset import geometry
-import matplotlib.cm as cm
-from matplotlib import pyplot as plt
-import numpy as np
-import random
-import open3d as o3d
-import pandas as pd
-import plotly.graph_objs as go
+# from pandaset import geometry
+# import matplotlib.cm as cm
+# from matplotlib import pyplot as plt
+# import numpy as np
+# import random
+# import open3d as o3d
+# import pandas as pd
+# import plotly.graph_objs as go
 from utils.utils import depth_projection,semantic_segmentation,display_map
 
 

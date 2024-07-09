@@ -29,7 +29,7 @@ hide_github_icon = """
 st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 # Set up the sidebar with a logo, a dropdown, and radio buttons
-st.sidebar.image(r"assets\logo\logo_clear.png", use_column_width=True)
+st.sidebar.image("assets/logo/logo_clear.png", use_column_width=True)
 
 
 dropdown_options = ["Depth Projection", "Semantic Segmentation", "Map Route"]

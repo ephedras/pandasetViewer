@@ -15,6 +15,10 @@ pip install -r requirements.txt
 ```
 
 4. Install pandaset-devkit
+5. Run the app
+```
+streamlit run pandasetViewer.py
+```
 
 ## Instructions for pandaset-devkit installation
 
@@ -26,11 +30,6 @@ pip install -r requirements.txt
 4. Execute `pip install .`
 
 The `pandaset-devkit` is now installed in your Python>=3.6 environment and can be used.
-
-5. Run the app
-```
-streamlit run pandasetViewer.py
-```
 
 ---
 ## License Statement

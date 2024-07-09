@@ -30,10 +30,7 @@ The `pandaset-devkit` is now installed in your Python>=3.6 environment and can b
 
 ---
 ## Video Demo
-<video width="600" controls>
-  <source src="assets/demoVids/Lidar3d.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+![Video Demo](assets\demoVids\Lidar3d.webm)
 
 ---
 

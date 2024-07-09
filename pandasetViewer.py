@@ -12,7 +12,7 @@ from utils.utils import depth_projection,semantic_segmentation,display_map
 
 
 #importing the dataset
-dataset = DataSet('pandaset')
+dataset = DataSet('data')
 #listing the data
 allSeqList = dataset.sequences()
 semSeqList = dataset.sequences(with_semseg=True)

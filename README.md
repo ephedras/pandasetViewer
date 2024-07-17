@@ -9,26 +9,19 @@ This is dataset viewer for pandaset dataset meant for autonomous vehicle researc
 git clone https://github.com/ephedras/pandasetViewer.git
 ```
 
-3. Install requirements
+3. Install requirements;
+Execute
 ```
-pip install -r requirements.txt
+pip install .
 ```
 
-4. Install pandaset-devkit
-5. Run the app
+pandaset-devkit and other requirements will be installed
+
+4. Run the app
 ```
 streamlit run pandasetViewer.py
 ```
 
-## Instructions for pandaset-devkit installation
-
-### Setup
-1. `cd` into `pandaset-devkit/python`
-4. Execute `pip install .`
-
-The `pandaset-devkit` is now installed in your Python>=3.6 environment and can be used.
-
----
 ### Demo
 
 
